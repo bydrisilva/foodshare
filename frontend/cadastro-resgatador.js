@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formResgatador = document.getElementById('resgatador-form');
 
   if (formResgatador) {
-    formResgatador.addEventListener('submit', (e) => {
+    formResgatador.addEventListener('submit', async (e) => {
       e.preventDefault();
       let formValido = true;
 
@@ -105,11 +105,36 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarErro(confirma, 'error-confirma');
       }
 
-      // Processamento final
+      // Processamento final (Integração com o Backend)
       if (formValido) {
-        // Simulação de Sucesso
-        alert("Cadastro realizado com sucesso! Bem-vindo ao FoodShare.");
-        window.location.href = 'index.html';
+        try {
+          const response = await fetch('http://localhost:3000/api/auth/cadastro', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              nome: nome.value,
+              cpf: cpf.value,
+              telefone: telefone.value,
+              email: email.value,
+              senha: senha.value,
+              tipo: 'resgatador'
+            })
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            alert('Cadastro realizado com sucesso! Faça login para continuar.');
+            window.location.href = 'login.html';
+          } else {
+            alert(data.error || 'Erro ao realizar cadastro.');
+          }
+        } catch (error) {
+          console.error('Erro na requisição de cadastro:', error);
+          alert('Erro de conexão com o servidor. Certifique-se de que o backend está rodando.');
+        }
       }
     });
   }

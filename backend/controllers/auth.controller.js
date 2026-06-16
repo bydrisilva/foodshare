@@ -77,3 +77,24 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: 'Erro interno do servidor ao realizar login.' });
   }
 };
+
+// Função para obter dados do usuário logado (GET /me)
+exports.getMe = async (req, res) => {
+  try {
+    // O id do usuário vem do token verificado pelo middleware e é colocado no req.user
+    const usuarioId = req.user.id;
+
+    // Busca o usuário no banco de dados, excluindo a senha (-senha) do retorno por segurança
+    const usuario = await User.findById(usuarioId).select('-senha');
+
+    if (!usuario) {
+      return res.status(404).json({ error: 'Usuário não encontrado.' });
+    }
+
+    res.status(200).json(usuario);
+  } catch (error) {
+    console.error('Erro ao buscar dados do usuário:', error);
+    res.status(500).json({ error: 'Erro interno do servidor ao buscar dados do usuário.' });
+  }
+};
+

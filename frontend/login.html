@@ -35,9 +35,17 @@
           <h2>Falta pouco para fazer a diferença!</h2>
           <p>Como deseja continuar?</p>
 
-          <button class="auth-btn" onclick="window.location.href='index.html'">
-            Conectar com E-mail
-          </button>
+          <form id="login-form">
+            <div class="form-group">
+              <input type="email" id="email" class="form-input" placeholder="Seu e-mail" required>
+            </div>
+            <div class="form-group" style="margin-top: 12px;">
+              <input type="password" id="senha" class="form-input" placeholder="Sua senha" required>
+            </div>
+            <button type="submit" class="auth-btn" style="margin-top: 16px;">
+              Entrar
+            </button>
+          </form>
 
           <!-- NOVA SEÇÃO DE CADASTRO -->
           <div class="register-box">
@@ -58,5 +66,6 @@
     </div>
   </main>
 
+  <script src="login.js"></script>
 </body>
 </html>
