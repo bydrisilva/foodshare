@@ -104,4 +104,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-Feito com por [Seu Nome/Empresa]. Juntos contra o desperdício!
+Feito por estudantes do curso de Engenharia de Software da Universidade Castólica de Brasília. 
