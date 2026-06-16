@@ -800,7 +800,7 @@ body:has(.bottom-nav) .content {
 .login-card p {
   font-size: 16px;
   color: var(--text-mid);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   font-weight: 600;
 }
 
@@ -817,7 +817,7 @@ body:has(.bottom-nav) .content {
   border: 2px solid #eaeaea;
   background: white;
   color: var(--text-dark);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .auth-btn:hover { 
@@ -842,8 +842,8 @@ body:has(.bottom-nav) .content {
 }
 
 .register-box {
-  margin-top: 24px;
-  padding-top: 20px;
+  margin-top: 16px;
+  padding-top: 16px;
   border-top: 2px dashed #eaeaea;
 }
 

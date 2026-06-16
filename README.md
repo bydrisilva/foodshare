@@ -1,6 +1,6 @@
-# 🍱 FoodShare
+# FoodShare
 
-> **Onde o excedente vira oportunidade.** 🌍
+> **Onde o excedente vira oportunidade.**
 
 O **FoodShare** é uma plataforma de economia circular e impacto social que conecta estabelecimentos comerciais (padarias, restaurantes, mercados) que possuem excedentes de alimentos de qualidade a pessoas que buscam refeições com preços acessíveis ou doações. 
 
@@ -8,7 +8,7 @@ Nossa missão é combater o desperdício de alimentos de forma inteligente, ráp
 
 ---
 
-## 🚀 Sobre o Projeto
+## Sobre o Projeto
 
 O FoodShare nasceu da urgência em reduzir os números alarmantes de desperdício global. Através de um **MVP (Minimum Viable Product)**, oferecemos uma experiência mobile intuitiva onde:
 
@@ -18,7 +18,7 @@ O FoodShare nasceu da urgência em reduzir os números alarmantes de desperdíci
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto foi construído utilizando as tecnologias mais modernas do ecossistema JavaScript para garantir escalabilidade e performance:
 
@@ -37,7 +37,7 @@ O projeto foi construído utilizando as tecnologias mais modernas do ecossistema
 
 ---
 
-## 📦 Como rodar o projeto
+## Como rodar o projeto
 
 Para rodar o FoodShare em sua máquina local, você precisará ter o **Node.js** e o **Git** instalados.
 
@@ -78,7 +78,7 @@ Agora, basta escanear o QR Code gerado no terminal usando o app **Expo Go** (dis
 
 ---
 
-## 🗺️ Roadmap e Próximas Funcionalidades
+## Roadmap e Próximas Funcionalidades
 - [ ] Implementação de pagamentos online (Pix/Cartão).
 - [ ] Sistema de avaliações para estabelecimentos.
 - [ ] Chat em tempo real para dúvidas sobre retirada.
@@ -86,7 +86,7 @@ Agora, basta escanear o QR Code gerado no terminal usando o app **Expo Go** (dis
 
 ---
 
-## 🤝 Contribuições
+## Contribuições
 
 Contribuições são o que fazem a comunidade open source um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
 
@@ -98,10 +98,10 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-Feito com ❤️ por [Seu Nome/Empresa]. Juntos contra o desperdício!
+Feito com por [Seu Nome/Empresa]. Juntos contra o desperdício!
