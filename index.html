@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#3d1a0e">
-<title>FoodShare - Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="foodshare.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3d1a0e">
+  <title>FoodShare - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="foodshare.css">
 </head>
 <body>
 
@@ -18,10 +18,14 @@
         </a>
         <div class="header-actions">
           <a href="meu-pedido.html" class="icon-btn" aria-label="Meu pedido">
-            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke="#3d1a0e" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke="#3d1a0e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
           </a>
           <button class="icon-btn" aria-label="Notificações">
-            <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" fill="currentColor"/>
+            </svg>
             <span class="notif-badge">2</span>
           </button>
         </div>
@@ -31,17 +35,23 @@
         <div class="location-label">Regiões próximas:</div>
       </div>
       <div class="location-name">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
         QR 207, Samambaia Norte.
       </div>
 
       <div class="search-row">
         <div class="search-box">
-          <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" stroke="#aaa" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" stroke="#aaa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
           <input type="text" placeholder="Buscar tipo de alimento...">
         </div>
         <button class="filter-btn" aria-label="Filtros">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4" stroke="#5c2a14" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M7 12h10M10 18h4" stroke="#5c2a14" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
         </button>
       </div>
 
@@ -57,10 +67,9 @@
   <main class="content">
 
     <!-- Banner Resgate Express -->
-    <a href="meu-pedido.html" class="banner" style="display:block;">
+    <a href="meu-pedido.html" class="banner">
       <div class="banner-label">Para retirada imediata:</div>
-      <img src="img-resgate-express.jpg" alt="Resgate Express" class="banner-img-placeholder"
-           onerror="this.style.background='linear-gradient(135deg,#8b4513,#d2691e)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='🍱';">
+      <div class="banner-img-placeholder">🍱</div>
       <div class="banner-text">
         <div class="banner-title">RESGATE<br>EXPRESS</div>
         <div class="banner-badge">⚡ 1 disponível</div>
@@ -68,7 +77,7 @@
     </a>
 
     <div class="section-header">
-      <div class="section-title">Alimentos próximos a você:</div>
+      <h2 class="section-title">Alimentos próximos a você:</h2>
       <a class="see-all" href="ver-todos.html">Ver todos →</a>
     </div>
 
@@ -76,8 +85,7 @@
 
       <a href="meu-pedido.html" class="food-card">
         <div class="food-card-img-wrap">
-          <img src="img-pao-de-queijo.jpg" alt="Pão de queijo" class="food-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="food-card-emoji" style="display:none">🧀</span>
+          <span class="food-card-emoji">🧀</span>
           <div class="food-card-tag">QR 401,<br>Sam. Norte</div>
           <div class="food-card-count">10</div>
           <span class="food-card-add-btn">+</span>
@@ -90,8 +98,7 @@
 
       <a href="meu-pedido.html" class="food-card">
         <div class="food-card-img-wrap">
-          <img src="img-brocolis.jpg" alt="Brócolis e couve" class="food-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="food-card-emoji" style="display:none">🥦</span>
+          <span class="food-card-emoji">🥦</span>
           <div class="food-card-tag">QR 211,<br>Sam. Norte</div>
           <div class="food-card-count">6</div>
           <span class="food-card-add-btn">+</span>
@@ -104,8 +111,7 @@
 
       <a href="meu-pedido.html" class="food-card">
         <div class="food-card-img-wrap">
-          <img src="img-marmita-frango.jpg" alt="Marmita de frango" class="food-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="food-card-emoji" style="display:none">🍗</span>
+          <span class="food-card-emoji">🍗</span>
           <div class="food-card-tag">QR 307,<br>Sam. Sul</div>
           <div class="food-card-count">1</div>
           <span class="food-card-add-btn">+</span>
@@ -118,8 +124,7 @@
 
       <a href="meu-pedido.html" class="food-card">
         <div class="food-card-img-wrap">
-          <img src="img-marmita-churrasco.jpg" alt="Marmita churrasco" class="food-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="food-card-emoji" style="display:none">🥩</span>
+          <span class="food-card-emoji">🥩</span>
           <div class="food-card-tag">QR 407,<br>Sam. Norte</div>
           <div class="food-card-count">1</div>
           <span class="food-card-add-btn">+</span>
@@ -136,19 +141,27 @@
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item active">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
       <span>Início</span>
     </a>
     <a href="ver-todos.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
       <span>Explorar</span>
     </a>
     <a href="meu-pedido.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/>
+      </svg>
       <span>Pedido</span>
     </a>
     <a href="login.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
       <span>Perfil</span>
     </a>
   </nav>
