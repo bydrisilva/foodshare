@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodShare - Meu Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="foodshare.css">
+  <style>
+    .conteiner-perfil { padding: 20px; text-align: center; width: 100%; max-width: 500px; }
+    .info-perfil { background: #fff; padding: 20px; border-radius: 20px; margin-top: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .info-perfil p { margin: 15px 0; font-size: 18px; color: var(--text-dark); font-weight: 600; }
+    .info-perfil strong { color: var(--brown-dark); font-weight: 800; }
+    .btn-sair { background-color: #e74c3c; color: white; border: none; padding: 16px; border-radius: 12px; cursor: pointer; width: 100%; margin-top: 30px; font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; transition: transform 0.2s, background 0.2s; }
+    .btn-sair:hover { background-color: #c0392b; transform: translateY(-2px); }
+    #nome-usuario { color: var(--brown-dark); font-family: 'Fredoka One', cursive; font-size: 32px; }
+  </style>
+</head>
+<body class="login-corpo">
+
+  <header class="cabecalho">
+    <div class="cabecalho-conteiner">
+      <div class="linha-voltar" style="margin-bottom: 0;">
+        <button class="btn-voltar" onclick="window.location.href='index.html'" aria-label="Voltar">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="titulo-tela">Meu Perfil</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="login-principal">
+    <div class="conteiner-perfil">
+      <h2>Olá, <br><span id="nome-usuario">...</span></h2>
+      
+      <div class="info-perfil">
+        <p><strong>Nome:</strong> <span id="nome-usuario-campo">Carregando...</span></p>
+        <p><strong>E-mail:</strong> <span id="email-usuario">Carregando...</span></p>
+        <p><strong>Telefone:</strong> <span id="telefone-usuario">Carregando...</span></p>
+      </div>
+
+      <button onclick="logout()" class="btn-sair">Sair da Conta</button>
+    </div>
+  </main>
+
+  <script>
+    // Função para buscar dados e preencher o perfil
+    async function carregarPerfil() {
+      const token = localStorage.getItem('token');
+
+      // Se não houver token, força o redirecionamento
+      if (!token) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      try {
+        const resposta = await fetch('http://localhost:3000/api/auth/me', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}` // Envia o token para o servidor
+          }
+        });
+
+        if (resposta.ok) {
+          const usuario = await resposta.json();
+          // Preenche os campos
+          document.getElementById('nome-usuario').textContent = usuario.nome;
+          document.getElementById('nome-usuario-campo').textContent = usuario.nome;
+          document.getElementById('email-usuario').textContent = usuario.email;
+          document.getElementById('telefone-usuario').textContent = usuario.telefone;
+        } else {
+          // Se o token for inválido, apaga e volta pro login
+          localStorage.removeItem('token');
+          window.location.href = 'login.html';
+        }
+      } catch (error) {
+        console.error("Erro ao carregar perfil:", error);
+      }
+    }
+
+    // Função de Logout
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+
+    // Executa ao carregar a página
+    carregarPerfil();
+  </script>
+</body>
+</html>
