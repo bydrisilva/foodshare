@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodShare - Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/foodshare.css">
+</head>
+<body class="auth-page">
+  <main class="auth-container">
+    <section class="auth-intro">
+      <a href="index.html"><img src="imagens/food-share-logo.svg" alt="FoodShare"></a>
+      <h1>COMPARTILHE <span>FAÇA A DIFERENÇA</span></h1>
+      <p>Entre com o e-mail e a senha cadastrados. O login foi mantido simples para o MVP acadêmico.</p>
+    </section>
+
+    <section class="auth-card">
+      <h2>Entrar no FoodShare</h2>
+      <p>Informe seus dados para continuar.</p>
+
+      <div id="mensagem-login" class="message" role="alert"></div>
+
+      <form id="form-login">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input id="email" class="form-input" type="email" required>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="senha">Senha</label>
+          <input id="senha" class="form-input" type="password" required>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">Entrar</button>
+          <a class="btn btn-neutral" href="index.html">Voltar</a>
+        </div>
+      </form>
+
+      <div class="auth-links">Ainda não possui conta? <a href="cadastro.html">Cadastre-se</a></div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/componentes.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

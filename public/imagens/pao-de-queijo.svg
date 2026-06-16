@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#f8d28b"/><stop offset="1" stop-color="#e99534"/></linearGradient></defs>
+  <rect width="640" height="420" fill="#f6ead8"/>
+  <ellipse cx="320" cy="325" rx="220" ry="45" fill="#3d1a0e" opacity=".12"/>
+  <circle cx="240" cy="205" r="90" fill="url(#g)"/>
+  <circle cx="365" cy="175" r="82" fill="url(#g)"/>
+  <circle cx="410" cy="270" r="76" fill="url(#g)"/>
+  <circle cx="270" cy="285" r="72" fill="url(#g)"/>
+  <g fill="#c86c1c" opacity=".55"><circle cx="215" cy="180" r="7"/><circle cx="278" cy="225" r="6"/><circle cx="388" cy="150" r="7"/><circle cx="430" cy="260" r="6"/></g>
+  <text x="320" y="390" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700" fill="#5c2a14">Pão de queijo</text>
+</svg>

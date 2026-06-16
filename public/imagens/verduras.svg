@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e8f3df"/>
+  <ellipse cx="320" cy="330" rx="220" ry="45" fill="#244b2d" opacity=".12"/>
+  <g fill="#4f9e4d"><circle cx="255" cy="190" r="75"/><circle cx="340" cy="150" r="80"/><circle cx="410" cy="220" r="72"/><circle cx="300" cy="260" r="86"/></g>
+  <g fill="#2f7438"><rect x="310" y="215" width="35" height="110" rx="15"/><path d="M210 280c50-80 100-95 125-70-20 55-68 90-125 70Z"/><path d="M345 280c45-75 95-82 125-48-28 48-76 72-125 48Z"/></g>
+  <text x="320" y="390" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700" fill="#244b2d">Verduras frescas</text>
+</svg>

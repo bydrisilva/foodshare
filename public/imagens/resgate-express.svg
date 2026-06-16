@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440">
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#5c2a14"/><stop offset="1" stop-color="#e8622a"/></linearGradient></defs>
+  <rect width="1200" height="440" rx="35" fill="url(#bg)"/>
+  <circle cx="920" cy="220" r="145" fill="#f8a91f"/>
+  <rect x="805" y="145" width="230" height="160" rx="25" fill="#fff" opacity=".92"/>
+  <path d="M920 145v160M805 225h230" stroke="#e8622a" stroke-width="8"/>
+  <text x="80" y="155" font-family="Arial" font-size="38" fill="#f8a91f" font-weight="700">PARA RETIRADA IMEDIATA</text>
+  <text x="80" y="245" font-family="Arial" font-size="76" fill="#fff" font-weight="900">RESGATE EXPRESS</text>
+  <text x="85" y="310" font-family="Arial" font-size="30" fill="#fff">Alimentos disponíveis próximos de você</text>
+</svg>

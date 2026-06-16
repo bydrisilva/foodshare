@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodShare - Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/foodshare.css">
+</head>
+<body class="auth-page">
+  <main class="auth-container">
+    <section class="auth-intro">
+      <a href="index.html"><img src="imagens/food-share-logo.svg" alt="FoodShare"></a>
+      <h1>SALVE A COMIDA <span>DO DESPERDÍCIO</span></h1>
+      <p>Uma única tela atende doadores e resgatadores, evitando dois formulários quase iguais.</p>
+    </section>
+
+    <section class="auth-card">
+      <h2>Crie sua conta</h2>
+      <p>Preencha os campos abaixo para participar do FoodShare.</p>
+
+      <div id="mensagem-cadastro" class="message" role="alert"></div>
+
+      <form id="form-cadastro">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="tipo">Como deseja participar?</label>
+            <select id="tipo" class="form-select" required>
+              <option value="">Selecione</option>
+              <option value="DOADOR">Quero doar alimentos</option>
+              <option value="RESGATADOR">Quero resgatar alimentos</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="nome">Nome completo</label>
+            <input id="nome" class="form-input" type="text" maxlength="120" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input id="cpf" class="form-input" type="text" maxlength="14" placeholder="000.000.000-00" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" class="form-input" type="text" maxlength="15" placeholder="(00) 00000-0000" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="email">E-mail</label>
+            <input id="email" class="form-input" type="email" maxlength="160" required>
+          </div>
+
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <input id="senha" class="form-input" type="password" minlength="6" required>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmar-senha">Confirmar senha</label>
+            <input id="confirmar-senha" class="form-input" type="password" minlength="6" required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">Concluir cadastro</button>
+          <a class="btn btn-neutral" href="index.html">Voltar</a>
+        </div>
+      </form>
+
+      <div class="auth-links">Já possui cadastro? <a href="login.html">Entrar</a></div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/componentes.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

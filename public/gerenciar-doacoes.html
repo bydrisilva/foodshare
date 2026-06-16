@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3d1a0e">
+  <title>FoodShare - Gerenciar doações</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/foodshare.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="header-top">
+        <div class="back-row">
+          <a class="back-btn" href="index.html" aria-label="Voltar para o início">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          </a>
+          <span class="screen-title">Gerenciar doações</span>
+        </div>
+        <a href="doacoes.html" class="icon-btn" aria-label="Ver doações">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div id="mensagem-doacao" class="message" role="alert"></div>
+
+    <div class="two-columns">
+      <section class="panel">
+        <h1 id="titulo-formulario" class="page-title">Cadastrar nova doação</h1>
+        <p class="texto-apoio">Este formulário implementa as operações de criação e edição do CRUD.</p>
+
+        <form id="form-doacao" style="margin-top: 20px;">
+          <input id="doacao-id" type="hidden">
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="nome-alimento">Nome do alimento</label>
+              <input id="nome-alimento" class="form-input" type="text" maxlength="120" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="descricao">Descrição</label>
+              <textarea id="descricao" class="form-textarea" maxlength="500" placeholder="Ex.: porções preparadas hoje."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <select id="categoria" class="form-select" required>
+                <option value="">Selecione</option>
+                <option value="LANCHE">Lanche</option>
+                <option value="ALMOCO">Almoço</option>
+                <option value="JANTAR">Jantar</option>
+                <option value="OUTRO">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quantidade">Quantidade</label>
+              <input id="quantidade" class="form-input" type="number" min="1" step="1" required>
+            </div>
+
+            <div class="form-group">
+              <label for="data-validade">Data de validade</label>
+              <input id="data-validade" class="form-input" type="date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" class="form-select" required>
+                <option value="DISPONIVEL">Disponível</option>
+                <option value="RESERVADA">Reservada</option>
+                <option value="RESGATADA">Resgatada</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="endereco">Endereço para retirada</label>
+              <input id="endereco" class="form-input" type="text" maxlength="220" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="bairro">Bairro ou região</label>
+              <input id="bairro" class="form-input" type="text" maxlength="100">
+            </div>
+
+            <div class="form-group">
+              <label for="nome-doador">Doador ou estabelecimento</label>
+              <input id="nome-doador" class="form-input" type="text" maxlength="120" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telefone-doador">Telefone</label>
+              <input id="telefone-doador" class="form-input" type="text" maxlength="20" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="imagem-url">Endereço da imagem (opcional)</label>
+              <input id="imagem-url" class="form-input" type="text" maxlength="500" placeholder="/imagens/marmita.svg ou https://...">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn" type="submit">Salvar doação</button>
+            <button id="botao-cancelar" class="btn btn-neutral" type="button" hidden>Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2 class="page-title">Doações cadastradas</h2>
+        <p class="texto-apoio">Aqui estão as operações de leitura, edição e exclusão.</p>
+
+        <div class="filters" style="margin-top: 20px; grid-template-columns: 2fr 1fr auto;">
+          <input id="busca-gerenciamento" class="form-input" type="search" placeholder="Buscar alimento ou doador">
+          <select id="status-gerenciamento" class="form-select">
+            <option value="">Todos os status</option>
+            <option value="DISPONIVEL">Disponíveis</option>
+            <option value="RESERVADA">Reservadas</option>
+            <option value="RESGATADA">Resgatadas</option>
+          </select>
+          <button id="botao-filtrar-gerenciamento" class="btn" type="button">Filtrar</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Alimento</th>
+                <th>Categoria</th>
+                <th>Qtd.</th>
+                <th>Validade</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela-doacoes"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <a href="index.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Início</span>
+    </a>
+    <a href="doacoes.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg><span>Explorar</span>
+    </a>
+    <a href="gerenciar-doacoes.html" class="nav-item active">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Doar</span>
+    </a>
+    <a href="login.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Perfil</span>
+    </a>
+  </nav>
+
+  <script src="js/api.js"></script>
+  <script src="js/componentes.js"></script>
+  <script src="js/gerenciar-doacoes.js"></script>
+</body>
+</html>

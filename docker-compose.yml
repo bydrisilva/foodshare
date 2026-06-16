@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: foodshare-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: foodshare
+      POSTGRES_USER: foodshare
+      POSTGRES_PASSWORD: foodshare123
+    ports:
+      - "5432:5432"
+    volumes:
+      - foodshare_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U foodshare -d foodshare"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  foodshare_postgres_data:
