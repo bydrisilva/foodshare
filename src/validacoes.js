@@ -1,7 +1,3 @@
-/*
- * Valores aceitos pelo sistema.
- * Eles também aparecem nas restrições do banco de dados.
- */
 const CATEGORIAS = ['LANCHE', 'ALMOCO', 'JANTAR', 'OUTRO'];
 const STATUS_DOACAO = ['DISPONIVEL', 'RESERVADA', 'RESGATADA'];
 const TIPOS_USUARIO = ['DOADOR', 'RESGATADOR'];

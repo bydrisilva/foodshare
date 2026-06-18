@@ -1,14 +1,19 @@
 # FoodShare
 
-Projeto acadêmico de extensão universitária para conectar pessoas ou estabelecimentos que possuem alimentos disponíveis a pessoas interessadas em resgatá-los.
+Projeto da faculdade para conectar pessoas ou estabelecimentos que têm alimentos disponíveis com pessoas que querem resgatar esses alimentos.
 
-A aplicação foi mantida propositalmente simples para facilitar o aprendizado e a apresentação do grupo. O front-end utiliza HTML, CSS e JavaScript puro. O back-end utiliza Node.js, Express e PostgreSQL.
+O projeto foi feito de forma simples:
+
+- HTML, CSS e JavaScript nas telas;
+- Node.js com Express no servidor;
+- PostgreSQL para salvar os dados.
 
 ## Funcionalidades
 
 - Cadastro de doadores e resgatadores;
 - Login simples por e-mail e senha;
 - Cadastro de doações;
+- Upload de fotos das doações;
 - Listagem de doações;
 - Pesquisa por alimento, doador, endereço ou bairro;
 - Filtro por categoria e status;
@@ -17,19 +22,18 @@ A aplicação foi mantida propositalmente simples para facilitar o aprendizado e
 - Reserva e confirmação da retirada de uma doação;
 - Senhas armazenadas com hash usando `bcryptjs`.
 
-## CRUD obrigatório
+## Como o projeto funciona
 
-O CRUD principal é realizado sobre a tabela `doacoes`:
+O funcionamento principal é:
 
-| Operação | Rota | Uso no sistema |
-|---|---|---|
-| Create | `POST /api/doacoes` | Cadastrar uma doação |
-| Read | `GET /api/doacoes` | Listar e filtrar doações |
-| Read | `GET /api/doacoes/:id` | Consultar uma doação |
-| Update | `PUT /api/doacoes/:id` | Editar uma doação |
-| Delete | `DELETE /api/doacoes/:id` | Excluir uma doação |
+1. A pessoa cria uma conta como doador ou resgatador.
+2. O doador cadastra um alimento na tela de gerenciamento.
+3. O alimento fica salvo no banco de dados.
+4. A página inicial e a página de doações buscam os alimentos no banco.
+5. O resgatador pode reservar a doação.
+6. O status muda para mostrar se a doação está disponível, reservada ou resgatada.
 
-Também existe a rota `PATCH /api/doacoes/:id/status`, usada para reservar, liberar ou concluir uma retirada.
+As fotos enviadas no cadastro ficam na pasta `public/uploads/doacoes`.
 
 ## Estrutura do projeto
 
@@ -57,7 +61,7 @@ foodshare/
 ├── scripts/
 │   └── init-db.js             # Executa o arquivo SQL
 ├── sql/
-│   └── init.sql               # Cria tabelas e dados de exemplo
+│   └── init.sql               # Cria as tabelas do banco
 ├── src/
 │   ├── routes/
 │   │   ├── doacoes.js
@@ -122,7 +126,7 @@ Com Podman:
 podman compose up -d
 ```
 
-### 5. Criar as tabelas e os dados de demonstração
+### 5. Criar as tabelas
 
 ```bash
 npm run db:init
@@ -148,7 +152,7 @@ http://localhost:3000
 | Explorar doações | `http://localhost:3000/doacoes.html` |
 | Cadastro de usuário | `http://localhost:3000/cadastro.html` |
 | Login | `http://localhost:3000/login.html` |
-| CRUD de doações | `http://localhost:3000/gerenciar-doacoes.html` |
+| Gerenciar doações | `http://localhost:3000/gerenciar-doacoes.html` |
 | Pedido selecionado | `http://localhost:3000/meu-pedido.html` |
 
 ## Banco de dados
@@ -168,7 +172,7 @@ Armazena doadores e resgatadores:
 
 ### `doacoes`
 
-Armazena as informações usadas no CRUD:
+Armazena as informações das doações:
 
 - Nome do alimento;
 - Descrição;
@@ -182,11 +186,11 @@ Armazena as informações usadas no CRUD:
 - Imagem;
 - Status.
 
-## Observação sobre o login
+## Observação sobre autenticação
 
-O login foi implementado de forma simples para o MVP. Ele valida e-mail e senha, mas não utiliza sessão, cookie ou token JWT. Os dados públicos do usuário são guardados no `localStorage` apenas para ajudar a preencher o formulário de doação.
+O login valida e-mail e senha, mas ainda é simples. Ele não controla permissões completas entre usuários.
 
-Em uma aplicação real seria necessário implementar autenticação completa e autorização no backend.
+Os dados públicos do usuário ficam no `localStorage` apenas para preencher automaticamente o formulário de doação.
 
 ## Comandos úteis
 

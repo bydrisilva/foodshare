@@ -2,8 +2,13 @@ const formularioCadastro = document.getElementById('form-cadastro');
 const mensagemCadastro = document.getElementById('mensagem-cadastro');
 const inputCpf = document.getElementById('cpf');
 const inputTelefone = document.getElementById('telefone');
+const selectTipo = document.getElementById('tipo');
+const tipoUrl = new URLSearchParams(window.location.search).get('tipo');
 
-/* Máscara simples para CPF. */
+if (['DOADOR', 'RESGATADOR'].includes(tipoUrl)) {
+  selectTipo.value = tipoUrl;
+}
+
 inputCpf.addEventListener('input', (evento) => {
   let valor = evento.target.value.replace(/\D/g, '').slice(0, 11);
   valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
@@ -12,7 +17,6 @@ inputCpf.addEventListener('input', (evento) => {
   evento.target.value = valor;
 });
 
-/* Máscara simples para telefone brasileiro. */
 inputTelefone.addEventListener('input', (evento) => {
   let valor = evento.target.value.replace(/\D/g, '').slice(0, 11);
   valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
@@ -38,7 +42,7 @@ formularioCadastro.addEventListener('submit', async (evento) => {
     telefone: inputTelefone.value,
     email: document.getElementById('email').value,
     senha,
-    tipo: document.getElementById('tipo').value,
+    tipo: selectTipo.value,
   };
 
   try {

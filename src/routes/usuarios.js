@@ -5,7 +5,6 @@ const { validarUsuario } = require('../validacoes');
 
 const router = express.Router();
 
-/* CREATE: cadastra um doador ou resgatador. */
 router.post('/', async (req, res, next) => {
   try {
     const usuario = {
@@ -23,7 +22,6 @@ router.post('/', async (req, res, next) => {
       return res.status(400).json({ mensagem: 'Dados inválidos.', erros });
     }
 
-    /* A senha nunca é salva diretamente no banco. */
     const senhaHash = await bcrypt.hash(usuario.senha, 10);
 
     const resultado = await pool.query(
@@ -46,11 +44,6 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-/*
- * Login acadêmico simples.
- * Ele valida e-mail e senha, mas não cria sessão ou token.
- * Para um sistema real, seria necessário adicionar autenticação completa.
- */
 router.post('/login', async (req, res, next) => {
   try {
     const email = req.body.email?.trim().toLowerCase();

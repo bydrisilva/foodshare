@@ -1,4 +1,7 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
 const pool = require('../database');
 const {
   CATEGORIAS,
@@ -9,10 +12,42 @@ const {
 
 const router = express.Router();
 
-/*
- * Converte o corpo recebido em um objeto padronizado.
- * Assim, as rotas de criação e edição usam a mesma estrutura.
- */
+const pastaUploads = path.join(__dirname, '..', '..', 'public', 'uploads', 'doacoes');
+fs.mkdirSync(pastaUploads, { recursive: true });
+
+// O multer recebe a foto enviada pelo formulário e salva na pasta de uploads.
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: pastaUploads,
+    filename(req, file, callback) {
+      const extensao = path.extname(file.originalname).toLowerCase();
+      const nome = `${Date.now()}-${Math.round(Math.random() * 1e9)}${extensao}`;
+      callback(null, nome);
+    },
+  }),
+  fileFilter(req, file, callback) {
+    if (!file.mimetype.startsWith('image/')) {
+      return callback(new Error('Envie um arquivo de imagem válido.'));
+    }
+
+    return callback(null, true);
+  },
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+});
+
+function removerArquivoEnviado(arquivo) {
+  if (!arquivo) return;
+  fs.unlink(arquivo.path, (erro) => {
+    if (erro) console.error('Não foi possível remover upload inválido:', erro);
+  });
+}
+
+function imagemRecebida(req) {
+  return req.file ? `/uploads/doacoes/${req.file.filename}` : null;
+}
+
 function montarDoacao(body) {
   return {
     nome_alimento: body.nome_alimento?.trim(),
@@ -29,7 +64,6 @@ function montarDoacao(body) {
   };
 }
 
-/* READ: lista as doações e aceita filtros opcionais. */
 router.get('/', async (req, res, next) => {
   try {
     const { busca, categoria, status } = req.query;
@@ -75,7 +109,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-/* READ: busca uma única doação pelo ID. */
 router.get('/:id', async (req, res, next) => {
   try {
     const resultado = await pool.query(
@@ -93,13 +126,14 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-/* CREATE: cadastra uma nova doação. */
-router.post('/', async (req, res, next) => {
+router.post('/', upload.single('imagem'), async (req, res, next) => {
   try {
     const doacao = montarDoacao(req.body);
+    doacao.imagem_url = imagemRecebida(req) || doacao.imagem_url;
     const erros = validarDoacao(doacao);
 
     if (erros.length > 0) {
+      removerArquivoEnviado(req.file);
       return res.status(400).json({ mensagem: 'Dados inválidos.', erros });
     }
 
@@ -139,13 +173,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-/* UPDATE: atualiza os dados de uma doação existente. */
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', upload.single('imagem'), async (req, res, next) => {
   try {
     const doacao = montarDoacao(req.body);
+    doacao.imagem_url = imagemRecebida(req) || doacao.imagem_url;
     const erros = validarDoacao(doacao);
 
     if (erros.length > 0) {
+      removerArquivoEnviado(req.file);
       return res.status(400).json({ mensagem: 'Dados inválidos.', erros });
     }
 
@@ -191,10 +226,6 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-/*
- * Atualiza somente o status.
- * Essa rota é usada quando alguém reserva ou libera uma doação.
- */
 router.patch('/:id/status', async (req, res, next) => {
   try {
     const { status } = req.body;
@@ -222,7 +253,6 @@ router.patch('/:id/status', async (req, res, next) => {
   }
 });
 
-/* DELETE: remove uma doação. */
 router.delete('/:id', async (req, res, next) => {
   try {
     const resultado = await pool.query(

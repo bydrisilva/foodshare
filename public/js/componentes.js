@@ -1,5 +1,3 @@
-/* Funções compartilhadas pelas páginas que exibem doações. */
-
 const EMOJIS_CATEGORIA = {
   LANCHE: '🥪',
   ALMOCO: '🍽️',
@@ -16,7 +14,6 @@ const NOMES_STATUS = {
 function formatarData(data) {
   if (!data) return 'Não informada';
 
-  /* O horário ao meio-dia evita alterações de dia causadas pelo fuso. */
   return new Date(`${data.substring(0, 10)}T12:00:00`).toLocaleDateString('pt-BR');
 }
 

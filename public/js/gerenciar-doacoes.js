@@ -6,6 +6,8 @@ const botaoCancelar = document.getElementById('botao-cancelar');
 const buscaGerenciamento = document.getElementById('busca-gerenciamento');
 const statusGerenciamento = document.getElementById('status-gerenciamento');
 const botaoFiltrarGerenciamento = document.getElementById('botao-filtrar-gerenciamento');
+const inputImagem = document.getElementById('imagem-arquivo');
+const imagemAtual = document.getElementById('imagem-atual');
 
 function lerUsuarioSalvo() {
   try {
@@ -25,24 +27,32 @@ function preencherDadosDoUsuario() {
 }
 
 function lerFormulario() {
-  return {
-    nome_alimento: document.getElementById('nome-alimento').value,
-    descricao: document.getElementById('descricao').value,
-    categoria: document.getElementById('categoria').value,
-    quantidade: document.getElementById('quantidade').value,
-    data_validade: document.getElementById('data-validade').value,
-    endereco: document.getElementById('endereco').value,
-    bairro: document.getElementById('bairro').value,
-    nome_doador: document.getElementById('nome-doador').value,
-    telefone_doador: document.getElementById('telefone-doador').value,
-    imagem_url: document.getElementById('imagem-url').value,
-    status: document.getElementById('status').value,
-  };
+  // FormData permite enviar texto e foto no mesmo formulário.
+  const dados = new FormData();
+  dados.append('nome_alimento', document.getElementById('nome-alimento').value);
+  dados.append('descricao', document.getElementById('descricao').value);
+  dados.append('categoria', document.getElementById('categoria').value);
+  dados.append('quantidade', document.getElementById('quantidade').value);
+  dados.append('data_validade', document.getElementById('data-validade').value);
+  dados.append('endereco', document.getElementById('endereco').value);
+  dados.append('bairro', document.getElementById('bairro').value);
+  dados.append('nome_doador', document.getElementById('nome-doador').value);
+  dados.append('telefone_doador', document.getElementById('telefone-doador').value);
+  dados.append('imagem_url', document.getElementById('imagem-url').value);
+  dados.append('status', document.getElementById('status').value);
+
+  if (inputImagem.files[0]) {
+    dados.append('imagem', inputImagem.files[0]);
+  }
+
+  return dados;
 }
 
 function limparFormulario() {
   formularioDoacao.reset();
   document.getElementById('doacao-id').value = '';
+  document.getElementById('imagem-url').value = '';
+  imagemAtual.textContent = '';
   document.getElementById('status').value = 'DISPONIVEL';
   tituloFormulario.textContent = 'Cadastrar nova doação';
   botaoCancelar.hidden = true;
@@ -64,6 +74,10 @@ async function preencherFormularioParaEdicao(id) {
     document.getElementById('nome-doador').value = doacao.nome_doador;
     document.getElementById('telefone-doador').value = doacao.telefone_doador;
     document.getElementById('imagem-url').value = doacao.imagem_url || '';
+    inputImagem.value = '';
+    imagemAtual.textContent = doacao.imagem_url
+      ? 'Foto atual mantida. Escolha outro arquivo para substituir.'
+      : '';
     document.getElementById('status').value = doacao.status;
 
     tituloFormulario.textContent = `Editar doação #${doacao.id}`;

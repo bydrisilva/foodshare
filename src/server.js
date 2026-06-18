@@ -9,17 +9,13 @@ const usuariosRoutes = require('./routes/usuarios');
 const app = express();
 const porta = Number(process.env.PORT || 3000);
 
-/* Permite receber objetos JSON enviados pelo front-end. */
 app.use(express.json());
 
-/* Publica os arquivos HTML, CSS, JavaScript e imagens da pasta public. */
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-/* Rotas da API. */
 app.use('/api/doacoes', doacoesRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 
-/* Rota simples para testar a aplicação e a conexão com o banco. */
 app.get('/api/health', async (req, res, next) => {
   try {
     await pool.query('SELECT 1');
@@ -29,12 +25,20 @@ app.get('/api/health', async (req, res, next) => {
   }
 });
 
-/*
- * Tratamento central de erros.
- * O detalhe completo aparece apenas no terminal, e não para o usuário.
- */
 app.use((erro, req, res, next) => {
   console.error(erro);
+
+  if (erro.name === 'MulterError') {
+    const mensagem = erro.code === 'LIMIT_FILE_SIZE'
+      ? 'A imagem deve ter no máximo 5 MB.'
+      : 'Não foi possível receber a imagem enviada.';
+
+    return res.status(400).json({ mensagem });
+  }
+
+  if (erro.message === 'Envie um arquivo de imagem válido.') {
+    return res.status(400).json({ mensagem: erro.message });
+  }
 
   if (erro.code === '23505') {
     return res.status(409).json({

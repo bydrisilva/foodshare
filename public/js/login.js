@@ -11,10 +11,6 @@ formularioLogin.addEventListener('submit', async (evento) => {
   try {
     const usuario = await foodShareApi.login(email, senha);
 
-    /*
-     * Armazena apenas dados públicos do usuário no navegador.
-     * Isso ajuda a preencher o formulário de doação no MVP.
-     */
     localStorage.setItem('foodshareUsuario', JSON.stringify(usuario));
 
     foodShareUi.exibirMensagem(

@@ -11,7 +11,6 @@ async function carregarHome() {
       status: 'DISPONIVEL',
     });
 
-    /* Na página inicial mostramos somente os seis registros mais recentes. */
     foodShareUi.renderizarCards(gradeHome, doacoes.slice(0, 6));
   } catch (erro) {
     foodShareUi.mostrarEstado(gradeHome, erro.message);

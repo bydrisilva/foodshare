@@ -1,20 +1,18 @@
-/*
- * Todas as chamadas ao backend ficam neste arquivo.
- * As outras páginas usam o objeto window.foodShareApi.
- */
-
 const API_BASE = '/api';
 
 async function requisicao(caminho, opcoes = {}) {
-  const resposta = await fetch(`${API_BASE}${caminho}`, {
-    headers: {
+  const headers = opcoes.body instanceof FormData
+    ? (opcoes.headers || {})
+    : {
       'Content-Type': 'application/json',
       ...(opcoes.headers || {}),
-    },
+    };
+
+  const resposta = await fetch(`${API_BASE}${caminho}`, {
     ...opcoes,
+    headers,
   });
 
-  /* A resposta 204 não possui conteúdo JSON. */
   if (resposta.status === 204) {
     return null;
   }
@@ -57,14 +55,14 @@ window.foodShareApi = {
   criarDoacao(doacao) {
     return requisicao('/doacoes', {
       method: 'POST',
-      body: JSON.stringify(doacao),
+      body: doacao instanceof FormData ? doacao : JSON.stringify(doacao),
     });
   },
 
   atualizarDoacao(id, doacao) {
     return requisicao(`/doacoes/${id}`, {
       method: 'PUT',
-      body: JSON.stringify(doacao),
+      body: doacao instanceof FormData ? doacao : JSON.stringify(doacao),
     });
   },
 

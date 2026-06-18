@@ -33,10 +33,11 @@
     <div class="two-columns">
       <section class="panel">
         <h1 id="titulo-formulario" class="page-title">Cadastrar nova doação</h1>
-        <p class="texto-apoio">Este formulário implementa as operações de criação e edição do CRUD.</p>
+        <p class="texto-apoio">Cadastre alimentos disponíveis para retirada e acompanhe suas doações.</p>
 
-        <form id="form-doacao" style="margin-top: 20px;">
+        <form id="form-doacao" style="margin-top: 20px;" enctype="multipart/form-data">
           <input id="doacao-id" type="hidden">
+          <input id="imagem-url" type="hidden">
 
           <div class="form-grid">
             <div class="form-group full">
@@ -100,8 +101,9 @@
             </div>
 
             <div class="form-group full">
-              <label for="imagem-url">Endereço da imagem (opcional)</label>
-              <input id="imagem-url" class="form-input" type="text" maxlength="500" placeholder="/imagens/marmita.svg ou https://...">
+              <label for="imagem-arquivo">Foto do alimento</label>
+              <input id="imagem-arquivo" class="form-input" type="file" accept="image/*">
+              <span id="imagem-atual" class="field-hint"></span>
             </div>
           </div>
 
@@ -114,7 +116,7 @@
 
       <section class="panel">
         <h2 class="page-title">Doações cadastradas</h2>
-        <p class="texto-apoio">Aqui estão as operações de leitura, edição e exclusão.</p>
+        <p class="texto-apoio">Edite, filtre ou remova alimentos cadastrados.</p>
 
         <div class="filters" style="margin-top: 20px; grid-template-columns: 2fr 1fr auto;">
           <input id="busca-gerenciamento" class="form-input" type="search" placeholder="Buscar alimento ou doador">

@@ -1,9 +1,3 @@
-/* =========================================================
-   FOODSHARE - ESTILOS GERAIS
-   Mantém a identidade visual original, mas organiza os estilos
-   em um único arquivo dentro da pasta public/css.
-   ========================================================= */
-
 :root {
   --marrom-escuro: #3d1a0e;
   --marrom: #5c2a14;
@@ -520,6 +514,11 @@ img {
 .form-textarea:focus {
   border-color: var(--laranja);
   box-shadow: 0 0 0 3px rgba(232, 98, 42, .14);
+}
+
+.field-hint {
+  color: var(--cinza);
+  font-size: 12px;
 }
 
 .form-actions,

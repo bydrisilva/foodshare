@@ -1,7 +1,7 @@
 {
   "name": "foodshare",
   "version": "1.0.0",
-  "description": "MVP acadêmico para cadastro e compartilhamento de doações de alimentos.",
+  "description": "Aplicação para cadastro e compartilhamento de doações de alimentos.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -15,6 +15,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "multer": "^2.2.0",
     "pg": "^8.13.1"
   }
 }
